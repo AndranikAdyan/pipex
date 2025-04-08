@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 18:48:45 by aadyan            #+#    #+#             */
-/*   Updated: 2025/04/08 19:19:18 by aadyan           ###   ########.fr       */
+/*   Created: 2025/04/08 19:25:10 by aadyan            #+#    #+#             */
+/*   Updated: 2025/04/08 19:56:10 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+void	ft_strjoin_free(char **arr)
 {
-	if (!validation(argc, argv))
-		return (1);
-	char *command = ret_command(env, argv[2]);
-	ft_putendl_fd(command, 1);
-	free(command);
-	(void)argv;
-	return 0;
+	int	i;
+	
+	i = 0;
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
 }
