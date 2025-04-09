@@ -53,4 +53,6 @@ Mkfile.old
 dkms.conf
 *.swp
 
+# other files
 .vscode
+output

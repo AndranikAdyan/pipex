@@ -42,7 +42,7 @@ lib:
 	@make -C $(LIBFT_DIR)
 
 build:
-	@mkdir -p ${BUILD_DIR}/fractals
+	@mkdir -p ${BUILD_DIR}
 
 clean:
 	@echo "🗑  ${RED}Remove Object Files...${RESET}"

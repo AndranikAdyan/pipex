@@ -26,7 +26,7 @@ SRCS		=	$(SRCS_DIR)/ft_isalpha.c \
 				$(SRCS_DIR)/ft_strlcat.c \
 				$(SRCS_DIR)/ft_bzero.c \
 				$(SRCS_DIR)/ft_strjoin.c \
-				$(SRCS_DIR)/ft_strjoin_free.c \
+				$(SRCS_DIR)/ft_split_free.c \
 				$(SRCS_DIR)/ft_strnstr.c \
 				$(SRCS_DIR)/ft_strlen.c \
 				$(SRCS_DIR)/ft_itoa.c \

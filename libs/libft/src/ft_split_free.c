@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_paths.c                                        :+:      :+:    :+:   */
+/*   ft_split_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 18:04:41 by aadyan            #+#    #+#             */
-/*   Updated: 2025/04/09 16:17:04 by aadyan           ###   ########.fr       */
+/*   Created: 2025/04/08 19:25:10 by aadyan            #+#    #+#             */
+/*   Updated: 2025/04/08 19:56:10 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-char	**get_paths(char **env)
+void	ft_split_free(char **arr)
 {
 	int	i;
 
 	i = 0;
-	while (env[i])
-	{
-		if (ft_strncmp(env[i], "PATH=", 5) == 0)
-			return (ft_split(env[i] + 5, ':'));
-		i++;
-	}
-	return (NULL);
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
 }
