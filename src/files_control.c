@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 10:44:41 by aadyan            #+#    #+#             */
-/*   Updated: 2025/04/09 16:13:30 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/04/09 18:56:57 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	open_files(int *io_fd, char *filename1, char *filename2)
 	}
 }
 
-void	close_fds(int pipe_fd[][2], int io_fd[2], int argc)
+void	close_fds(int **pipe_fd, int io_fd[2], int argc)
 {
 	int	index;
 

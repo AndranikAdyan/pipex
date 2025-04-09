@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_paths.c                                        :+:      :+:    :+:   */
+/*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 18:04:41 by aadyan            #+#    #+#             */
-/*   Updated: 2025/04/09 19:41:12 by aadyan           ###   ########.fr       */
+/*   Created: 2025/04/09 18:20:03 by aadyan            #+#    #+#             */
+/*   Updated: 2025/04/09 18:22:27 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	**get_paths(char **env)
+void	init_data(t_data *data, char **argv, int index)
 {
-	int	i;
+	data->splited = ft_split(argv[index], ' ');
+	data->command = ret_command(data->splited[0], data->path);
+}
 
-	i = 0;
-	while (env[i])
-	{
-		if (ft_strncmp(env[i], "PATH=", 5) == 0)
-			return (ft_split(env[i] + 5, ':'));
-		i++;
-	}
-	return (NULL);
+void	free_data(t_data *data)
+{
+	free(data->command);
+	ft_split_free(data->splited);
 }
