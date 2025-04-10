@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 10:44:41 by aadyan            #+#    #+#             */
-/*   Updated: 2025/04/09 18:56:57 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/04/11 10:53:46 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	close_fds(int **pipe_fd, int io_fd[2], int argc)
 	int	index;
 
 	index = 0;
-	while (index < argc - 3)
+	while (index < argc - 4)
 	{
 		close(pipe_fd[index][0]);
 		close(pipe_fd[index][1]);

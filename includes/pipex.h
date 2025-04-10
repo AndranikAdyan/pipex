@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 18:50:17 by aadyan            #+#    #+#             */
-/*   Updated: 2025/04/09 20:16:57 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/04/11 10:58:11 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	**get_paths(char **env);
 void	execute_cmd(t_data data, int argc, char **argv, char**env);
 char	*ret_command(char *command, char **path);
 void	open_files(int *io_fd, char *filename1, char *filename2);
-void	set_fds(int io_fd[2], int **pipe_fd, int index, int argc);
+void	set_fds(t_data data, int index, int argc);
 void	close_fds(int **pipe_fd, int io_fd[2], int argc);
 void	set_pipes(int **pipe_fd, int argc);
 
@@ -46,5 +46,8 @@ void	free_data(t_data *data);
 
 int		**malloc_pipe_fd(int ac);
 void	free_pipe_fd(int **pipe_fd, int ac);
+
+int		is_here_doc(char **argv);
+void	here_doc_input(t_data data, char **argv);
 
 #endif

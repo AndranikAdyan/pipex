@@ -84,7 +84,7 @@ char	*get_next_line(int fd)
 	static char	*str;
 	char		*s;
 
-	if ((fd != 0 && fd < 2) || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	read_line(fd, &str);
 	s = ft_cutstr(str);
