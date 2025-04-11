@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 10:44:41 by aadyan            #+#    #+#             */
-/*   Updated: 2025/04/11 11:43:18 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/04/11 13:48:43 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	open_files(int *io_fd, char *filename1, char *filename2, int here_doc)
 	if (io_fd[1] == -1)
 	{
 		perror(filename2);
-		exit(errno);
+		exit(1);
 	}
 	if (here_doc)
 	{
@@ -31,7 +31,7 @@ void	open_files(int *io_fd, char *filename1, char *filename2, int here_doc)
 	{
 		close(io_fd[1]);
 		perror(filename1);
-		exit(errno);
+		exit(1);
 	}
 }
 

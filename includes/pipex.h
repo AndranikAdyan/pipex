@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 18:50:17 by aadyan            #+#    #+#             */
-/*   Updated: 2025/04/11 11:44:08 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/04/11 13:47:46 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@
 # include <sys/wait.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include <errno.h>
-# include <string.h>
+// # include <string.h>
 # include "libft.h"
 
 # define FILE_NAME "/tmp/here_doc.tmp"

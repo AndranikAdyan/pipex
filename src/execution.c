@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 20:09:35 by aadyan            #+#    #+#             */
-/*   Updated: 2025/04/11 11:09:35 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/04/11 13:48:28 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	execute_cmd(t_data data, int argc, char **argv, char **env)
 			ft_split_free(data.path);
 			execve(data.command, data.splited, env);
 			perror(data.splited[0]);
-			exit(errno);
+			exit(1);
 		}
 		free_data(&data);
 	}
