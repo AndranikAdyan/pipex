@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:56:10 by aadyan            #+#    #+#             */
-/*   Updated: 2025/04/11 10:58:00 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/04/11 11:16:12 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ char	*ret_command(char *command, char **path)
 	return (NULL);
 }
 
-int	validation(int argc)
+int	validation(int argc, char **argv)
 {
-	if (argc < 5)
+	if (argc < 5 || (argc < 6 && is_here_doc(argv)))
 	{
 		ft_putstr_fd("Error: invalid number of arguments\n", 1);
 		return (0);

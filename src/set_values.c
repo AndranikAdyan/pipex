@@ -6,37 +6,37 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:46:05 by aadyan            #+#    #+#             */
-/*   Updated: 2025/04/11 10:52:21 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/04/11 11:23:32 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	set_fds(t_data data, int index, int argc)
+void	set_fds(t_data data, int index, int argc, int here_doc)
 {
-	if (index == 2)
+	if (index == 2 + here_doc)
 	{
 		dup2(data.io_fd[0], STDIN_FILENO);
-		dup2(data.pipe_fd[index - 2][1], STDOUT_FILENO);
+		dup2(data.pipe_fd[index - 2 - here_doc][1], STDOUT_FILENO);
 	}
 	else if (index < argc - 2)
 	{
-		dup2(data.pipe_fd[index - 3][0], STDIN_FILENO);
-		dup2(data.pipe_fd[index - 2][1], STDOUT_FILENO);
+		dup2(data.pipe_fd[index - 3 - here_doc][0], STDIN_FILENO);
+		dup2(data.pipe_fd[index - 2 - here_doc][1], STDOUT_FILENO);
 	}
 	else
 	{
-		dup2(data.pipe_fd[index - 3][0], STDIN_FILENO);
+		dup2(data.pipe_fd[index - 3 - here_doc][0], STDIN_FILENO);
 		dup2(data.io_fd[1], STDOUT_FILENO);
 	}
 }
 
-void	set_pipes(int **pipe_fd, int argc)
+void	set_pipes(int **pipe_fd, int argc, int here_doc)
 {
 	int	index;
 
 	index = 0;
-	while (index < argc - 4)
+	while (index < argc - 4 - here_doc)
 		pipe(pipe_fd[index++]);
 }
 
