@@ -20,9 +20,11 @@ char	*ret_command(char *command, char **path)
 	i = 0;
 	if (!path)
 		return (ft_strdup(command));
+	if (ft_strchr(command, '/'))
+		return (ft_strdup(command));
 	while (path[i])
 	{
-		command_path = ft_strjoin(path[i], command, '/');
+		command_path = ft_join_with_sep(path[i], command, '/');
 		if (access(command_path, F_OK) == 0)
 			return (command_path);
 		free(command_path);

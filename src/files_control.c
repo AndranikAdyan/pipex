@@ -14,7 +14,10 @@
 
 void	open_files(int *io_fd, char *filename1, char *filename2, int here_doc)
 {
-	io_fd[1] = open(filename2, O_CREAT | O_TRUNC | O_WRONLY, 0644);
+	if (here_doc)
+		io_fd[1] = open(filename2, O_CREAT | O_APPEND | O_WRONLY, 0644);
+	else
+		io_fd[1] = open(filename2, O_CREAT | O_TRUNC | O_WRONLY, 0644);
 	if (io_fd[1] == -1)
 	{
 		perror(filename2);
@@ -35,12 +38,12 @@ void	open_files(int *io_fd, char *filename1, char *filename2, int here_doc)
 	}
 }
 
-void	close_fds(int **pipe_fd, int io_fd[2], int argc)
+void	close_fds(int **pipe_fd, int io_fd[2], int argc, int here_doc)
 {
 	int	index;
 
 	index = 0;
-	while (index < argc - 4)
+	while (index < argc - 4 - here_doc)
 	{
 		close(pipe_fd[index][0]);
 		close(pipe_fd[index][1]);

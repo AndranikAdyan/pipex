@@ -18,7 +18,7 @@ HEADERS			= ./includes/pipex.h
 
 CC				= cc
 
-FLAGS			= -Wall -Wextra -Werror -g3 -fsanitize=address
+FLAGS			= -Wall -Wextra -Werror
 
 SRC_DIR			= ./src
 
