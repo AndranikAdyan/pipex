@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:56:10 by aadyan            #+#    #+#             */
-/*   Updated: 2025/04/11 11:16:12 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/04/13 18:08:20 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ char	*ret_command(char *command, char **path)
 	char	*command_path;
 	int		i;
 
+	if (!command)
+		return (NULL);
+	if (!path || ft_strchr(command, '/'))
+		return (ft_strdup(command));
 	i = 0;
-	if (!path)
-		return (ft_strdup(command));
-	if (ft_strchr(command, '/'))
-		return (ft_strdup(command));
 	while (path[i])
 	{
 		command_path = ft_join_with_sep(path[i], command, '/');
-		if (access(command_path, F_OK) == 0)
+		if (access(command_path, F_OK | X_OK) == 0)
 			return (command_path);
 		free(command_path);
 		i++;

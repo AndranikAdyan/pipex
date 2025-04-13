@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:46:05 by aadyan            #+#    #+#             */
-/*   Updated: 2025/04/12 15:34:23 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/04/13 18:29:42 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,36 @@ void	set_pipes(int **pipe_fd, int argc, int here_doc)
 
 	index = 0;
 	while (index < argc - 4 - here_doc)
-		pipe(pipe_fd[index++]);
+	{
+		if (pipe(pipe_fd[index]) == -1)
+		{
+			while (--index >= 0)
+			{
+				close(pipe_fd[index][0]);
+				close(pipe_fd[index][1]);
+				free(pipe_fd[index]);
+			}
+			free(pipe_fd);
+			perror("pipe failed");
+			exit(1);
+		}
+		index++;
+	}
 }
 
-int	**malloc_pipe_fd(int ac)
+int	**malloc_pipe_fd(int ac, int here_doc)
 {
 	int	**pipe_fd;
 	int	i;
 
-	pipe_fd = malloc((ac - 4) * sizeof(int *));
+	pipe_fd = malloc((ac - 4 - here_doc) * sizeof(int *));
 	if (!pipe_fd)
 	{
 		perror("malloc");
 		return (NULL);
 	}
 	i = 0;
-	while (i < ac - 4)
+	while (i < ac - 4 - here_doc)
 	{
 		pipe_fd[i] = malloc(2 * sizeof(int));
 		if (!pipe_fd[i])
@@ -66,19 +80,4 @@ int	**malloc_pipe_fd(int ac)
 		i++;
 	}
 	return (pipe_fd);
-}
-
-void	free_pipe_fd(int **pipe_fd, int ac)
-{
-	int	i;
-
-	if (!pipe_fd)
-		return ;
-	i = 0;
-	while (i < ac - 4)
-	{
-		free(pipe_fd[i]);
-		i++;
-	}
-	free(pipe_fd);
 }
