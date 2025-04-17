@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 10:44:41 by aadyan            #+#    #+#             */
-/*   Updated: 2025/04/13 18:23:20 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/04/17 18:37:08 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	open_files(int *io_fd, char *filename1, char *filename2, int here_doc)
 		io_fd[0] = open(filename1, O_RDONLY);
 	if (io_fd[0] == -1)
 	{
-		close(io_fd[1]);
 		perror(filename1);
 		return (0);
 	}

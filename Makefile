@@ -1,4 +1,4 @@
-MAKEFLAGS	+= --no-print-directory -s
+MAKEFLAGS	+= --no-print-directory
 
 RED				= \e[31m
 GREEN			= \e[32m
@@ -36,7 +36,7 @@ $(BUILD_DIR)/%.o:	$(SRC_DIR)/%.c $(HEADERS) Makefile
 
 $(NAME): $(OBJ) $(LIBFT_DIR)/libft.a
 	@$(CC) $(FLAGS) $(INCLUDES) $(OBJ) -o $(NAME) $(LIBFT) $(MLX)
-	@echo "$(YELLOW)Pipex Done! 📿$(RESET)"
+	@echo "$(YELLOW)Pipex Done!$(RESET)"
 
 lib:
 	@make -C $(LIBFT_DIR)

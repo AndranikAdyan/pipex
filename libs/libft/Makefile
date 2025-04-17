@@ -73,7 +73,7 @@ $(BUILD)/%.o:	$(SRCS_DIR)/%.c $(HEADER) Makefile
 
 $(NAME):	$(OBJS)
 	@$(AR) $(NAME) $(OBJS)
-	@echo "${YELLOW}Libft Done!${RESET} 📿\n"
+	@echo "${YELLOW}Libft Done!${RESET}\n"
 
 $(BUILD):
 	@mkdir -p $(BUILD)
